@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Search</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'uniprotsearch/style.css' %}">
+    </head>
+    <body>
+        <div class="child-box form-control">
+            <div class="title">Protein Search</div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+    </body>
+</html>
