@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <title>Search</title>
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'uniprotsearch/style.css' %}">
+        <script src="{% static 'uniprotsearch/script.js' %}"></script>   
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <div class="child-box form-control">
-            <div class="title">Protein Search</div>
+            <div class="title main-title">Protein Search</div>
+            <br>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {% for field in form %}
+                    <div class={{field.name}}-div>
+                    <i class="material-icons" id="btnInfo">info</i>
+                    <label for="id_{{ field.name }}" class="control-label">{{ field.label }}</label>
+                    <p>
+                        {{ field }}
+                    </p>
+                    </div>
+                {% endfor %}
+                <button class="btnselect" type="select">Select all modyfications</button>
+                <br>
                 <button type="submit">Submit</button>
             </form>
+            <footer>
+                <a href="about">About</a>
+                <a href="https://www.uniprot.org/">Uniprot</a>
+            </footer>
         </div>
-
     </body>
+
 </html>

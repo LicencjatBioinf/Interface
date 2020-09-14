@@ -4,12 +4,13 @@
         <title>Search results</title>
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'uniprotsearch/style.css' %}">
+        <script src="{% static 'uniprotsearch/script.js' %}"></script>   
     </head>
     <body>
         <div class="child-box form-control">
             <div class="title">Results</div>
-            Zaladowano {{ protein_counter }} bialek <br />
-            Utworzono widmo eksperymentalne z {{ liczba_pikow }} pikow <br />
+            Liczba znalezionych białek: {{ protein_counter }}<br />
+            Liczba pików w widmie eksperymentalnym: {{ liczba_pikow }}<br />
             Otrzymano nastepujace wyniki: <br />
             <table>
                 <tr>
@@ -19,13 +20,14 @@
                     <th>Transported probability</th>
                 </tr>
                 {% for i in results %}
-                    <tr>
-                        <td></td>
-                        <td>{{ i.name }}</td>
-                        <td>{{ i.graph.wdist }}</td>
-                        <td>{{ i.graph.transported }}</td>
-                    </tr>
-                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.graph.wdist }}</td>
+                    <td>{{ i.graph.transported }}</td>
+                </tr>
+                {% endfor %} 
+                
             </table>
             </div>
 
