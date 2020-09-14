@@ -143,8 +143,8 @@ if __name__ == "__main__":
     mass_start = mid - tol
     mass_end = mid + tol
     for hdr, seq in FastaIndexer(fasta).search(mass_start, mass_end):
-        print(hdr)
+        # print(hdr)
         while len(seq) > 0:
             # Inefficient, but it's only for testing...
-            print(seq[:60])
+            # print(seq[:60])
             seq = seq[60:]
