@@ -20,7 +20,7 @@ def search(request):
         if form.is_valid():
             input_file = form.cleaned_data['spectrum_input_file']
             max_wasserstain_distance = form.cleaned_data['max_wasserstain_distance']
-            theoretical_spectrum = form.cleaned_data['theoretical_spectrum']
+            theoretical_spectrum_coverage = form.cleaned_data['theoretical_spectrum_coverage']
             organism = form.cleaned_data['organism']
             search_area = form.cleaned_data['search_area']
             database = form.cleaned_data['database']
@@ -34,7 +34,7 @@ def search(request):
             moja_lista = ReadInputFile(input_file) 
             mean_mass=sum(prob*mass for mass,prob in moja_lista)
             f = [(id.split("|")[1], seq) for id, seq in FastaIndexer(uniprot_path).search(
-                mean_mass - max_wasserstain_distance, mean_mass + max_wasserstain_distance)]
+                mean_mass - max_wasserstain_distance, mean_mass + max_wasserstain_distance) if organism in id]
 
 
 

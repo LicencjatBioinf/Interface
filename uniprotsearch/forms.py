@@ -4,7 +4,7 @@ class SearchForm(forms.Form):
     #name = forms.CharField()
     spectrum_input_file = forms.FileField()
     max_wasserstain_distance = forms.FloatField(label=('Max Wasserstain distace'), initial=0.5)
-    theoretical_spectrum = forms.FloatField(initial=0.98)
+    theoretical_spectrum_coverage = forms.FloatField(initial=0.98, min_value=0.0, max_value=1.0)
     organism = forms.CharField(required=False, label=('Organism (optional)'))
     DATABASES= [
         ('1', 'TrEMBL'),
